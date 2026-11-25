@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#141815" />
+    <title>OffGrid Medic · Field console</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <span class="cross">✚</span><span>OffGrid <b>Medic</b></span>
+      </div>
+      <span class="divider"></span
+      ><span class="unit">WILDERNESS RESPONSE SYSTEM</span
+      ><span id="network" class="status"></span>
+    </header>
+    <main>
+      <div class="heading">
+        <div>
+          <div class="kicker"><i></i> OPERATIONS / FIELD CONSOLE</div>
+          <h1>Field console<span>.</span></h1>
+        </div>
+        <span class="training">TRAINING MODE</span>
+      </div>
+      <section class="hero">
+        <canvas id="terrain" aria-hidden="true"></canvas>
+        <div class="heroContent">
+          <div class="kicker warm">◉ &nbsp; INCIDENT INTAKE</div>
+          <h2>Describe the emergency</h2>
+          <p>Speak or type what happened to find a field protocol.</p>
+          <div class="actions">
+            <button class="primary" id="voice">🎙 Start voice intake</button
+            ><button class="ghost" id="type">Type incident</button>
+          </div>
+        </div>
+      </section>
+      <div class="grid">
+        <div class="left">
+          <section class="panel">
+            <div class="panelhead">
+              <h2><i data-icon="pack"></i>Backpack inventory</h2>
+              <small id="count">0 SELECTED</small>
+            </div>
+            <p>Select the gear you have on hand.</p>
+            <div id="gear"></div>
+          </section>
+          <section class="panel" id="deckPanel">
+            <div class="panelhead">
+              <h2><i data-icon="cards"></i>Triage deck</h2>
+              <small id="deckStatus">STANDBY</small>
+            </div>
+            <div id="deck" aria-live="polite"></div>
+          </section>
+        </div>
+        <aside>
+          <section class="panel">
+            <div class="panelhead">
+              <h2><i data-icon="book"></i>Protocol index</h2>
+              <small>05 LOCAL</small>
+            </div>
+            <div id="library"></div>
+          </section>
+          <section class="panel">
+            <div class="panelhead">
+              <h2><i data-icon="signal"></i>Field telemetry</h2>
+            </div>
+            <dl>
+              <dt>Inference engine</dt>
+              <dd id="engine">Idle</dd>
+              <dt>First token</dt>
+              <dd id="latency">—</dd>
+              <dt>Protocol ID</dt>
+              <dd id="pid">—</dd>
+              <dt>Offline cache</dt>
+              <dd id="cache">Checking</dd>
+            </dl>
+            <details>
+              <summary>Inference settings</summary>
+              <label
+                >Routing
+                <select id="route">
+                  <option value="auto">Prefer on-device</option>
+                  <option value="device">Device only</option>
+                  <option value="cloud">Cloud only</option>
+                </select></label
+              >
+              <p>
+                When configured, cloud inference receives the topic and selected
+                gear.
+              </p>
+              <button id="pack">Install offline English speech</button>
+              <p id="routeInfo"></p>
+            </details>
+          </section>
+        </aside>
+      </div>
+      <footer>
+        <span>✚ &nbsp; OFFGRID MEDIC</span
+        ><span>Wilderness first-aid training prototype</span>
+      </footer>
+    </main>
+    <dialog id="modal">
+      <form method="dialog">
+        <button class="close" aria-label="Close">×</button>
+      </form>
+      <div id="dialogContent"></div>
+    </dialog>
+    <div id="notice" role="status"></div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
